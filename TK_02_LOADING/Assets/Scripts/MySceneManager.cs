@@ -52,13 +52,13 @@ public class MySceneManager : Singleton<MySceneManager>
         {
             case SceneDropMode.OnlyLast:
                 {
-                    scenesToDrop.Add(UnityEngine.SceneManagement.SceneManager.GetSceneAt(UnityEngine.SceneManagement.SceneManager.sceneCount - 1));
+                    scenesToDrop.Add(SceneManager.GetSceneAt(SceneManager.sceneCount - 1));
                 } break;
             case SceneDropMode.TillInit:
                 {
-                    for (int i = 1; i < UnityEngine.SceneManagement.SceneManager.sceneCount; ++i)
+                    for (int i = 1; i < SceneManager.sceneCount; ++i)
                     {
-                        scenesToDrop.Add(UnityEngine.SceneManagement.SceneManager.GetSceneAt(i));
+                        scenesToDrop.Add(SceneManager.GetSceneAt(i));
                     }
                 } break;
         }
@@ -69,7 +69,7 @@ public class MySceneManager : Singleton<MySceneManager>
         while (!asyncLoad.isDone)
             yield return null;
 
-        Scene nextScene = UnityEngine.SceneManagement.SceneManager.GetSceneAt(UnityEngine.SceneManagement.SceneManager.sceneCount - 1);
+        Scene nextScene = SceneManager.GetSceneAt(SceneManager.sceneCount - 1);
         var rootGameObjects = nextScene.GetRootGameObjects();
         for (int i = 0; i < rootGameObjects.Length; ++i)
         {
@@ -86,7 +86,7 @@ public class MySceneManager : Singleton<MySceneManager>
         {
             for (int i = 0; i < scenesToDrop.Count; ++i)
             {
-                AsyncOperation asyncUnload = UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(scenesToDrop[i]);
+                AsyncOperation asyncUnload = SceneManager.UnloadSceneAsync(scenesToDrop[i]);
                 while (!asyncUnload.isDone)
                     yield return null;
             }

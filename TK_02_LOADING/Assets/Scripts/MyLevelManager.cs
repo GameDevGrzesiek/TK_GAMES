@@ -57,9 +57,6 @@ public class MyLevelManager : Singleton<MyLevelManager>
 
     private void StartLevel()
     {
-        if (!DoneLoading)
-            return;
-
         // LAST INIT FOR GAMEPLAY STUFF
     }
 }
