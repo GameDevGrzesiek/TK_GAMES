@@ -27,8 +27,6 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     }
 
 
-    // niekonieczne, ale przydatne jeżeli chcemy 
-    // automatycznej inicjalizacji na początku sceny
     protected void Awake()
     {
         ReturnInstance();
